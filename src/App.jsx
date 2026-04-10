@@ -7,6 +7,9 @@ import ErrorMessage from "./components/ErrorMessage";
 import Question from "./components/Question";
 import Footer from "./components/Footer";
 import NextButton from "./components/NextButton";
+import FinishScreen from "./components/FinishScreen";
+import Progress from "./components/Progress";
+import Timer from "./components/Timer";
 
 function App() {
   const { status } = useQuiz();
@@ -21,12 +24,15 @@ function App() {
         {status === "ready" && <StartScreen />}
         {status === "active" && (
           <>
+            <Progress />
             <Question />
             <Footer>
+              <Timer />
               <NextButton />
             </Footer>
           </>
         )}
+        {status === "finished" && <FinishScreen />}
       </Main>
     </div>
   );
